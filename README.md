@@ -1,4 +1,4 @@
-![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/fc06ae01-5cf7-403d-ba25-daf11b027b02)
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/68f567d6-21d1-495b-b910-befc388a3a11)
 
 ## KTDS 2차 Final Assessment 수행 리포트
 본 프로젝트는 클라우드 네이티브 애플리케이션의 개발에 요구되는 체크포인트들을 통과하기 위한 구성으로 설계하였습니다.
