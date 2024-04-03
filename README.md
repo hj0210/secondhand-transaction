@@ -3,7 +3,7 @@
 ## KTDS 2차 Final Assessment 수행 리포트
 본 프로젝트는 클라우드 네이티브 애플리케이션의 개발에 요구되는 체크포인트들을 통과하기 위한 구성으로 설계하였습니다.
 - 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
-- 
+  
 ## 클라우드 아키텍처
 - 이미지 첨부 예정
 ## MSA 아키텍처
@@ -13,8 +13,10 @@
 당근마켓 커버하기
 
 구매자, 판매자를 User(이하 유저)라 칭한다.
-유저는 상품을 선택하여 주문한다
-거래를 시작한다
+유저는 상품을 선택하여 거래 날짜를 예약한다
+예약이 모두 완료되면 알림과 함께 상태가 업데이트된다.
+
+
 주문이 되면 주문 내역이 입점상점주인에게 전달된다
 상점주인이 확인하여 요리해서 배달 출발한다
 고객이 주문을 취소할 수 있다
@@ -34,7 +36,7 @@
 
 
 ## Event Storming
-![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/78eeddc7-b91a-466b-bdd3-2f65beba28bc)
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9a650292-74e8-4172-83d0-2a4c7c1b36d1)
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
