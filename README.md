@@ -3,7 +3,15 @@
 ## KTDS 2차 Final Assessment 수행 리포트
 본 프로젝트는 클라우드 네이티브 애플리케이션의 개발에 요구되는 체크포인트들을 통과하기 위한 구성으로 설계하였습니다.
 - 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
+
+## Event Storming
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/78eeddc7-b91a-466b-bdd3-2f65beba28bc)
+
+
+
+
+
+
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
