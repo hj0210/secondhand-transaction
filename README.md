@@ -14,21 +14,9 @@
 
 구매자, 판매자를 User(이하 유저)라 칭한다.
 유저는 상품을 선택하여 거래 날짜를 예약한다.
-거래에 성공할 경우 재고가 감소한다.
+예약완료 상태로 POST가 되면 거래진행중으로 상태가 변경된다.
+거래대금(price)가 상품의 가격으로 POST되면 재고가 감소된다.
 예약/거래/재고 상태가 변경될 경우 알림과 함께 상태가 업데이트된다.
-
-docker compose는 infra folder에서
-```
-gitpod /workspace/secondhand-transaction (main) $ cd infra/
-gitpod /workspace/secondhand-transaction/infra (main) $ docker-compose exec -it kafka /bin/bash
-```
-```
-카프카실행
-[appuser@2e7265ba6071 ~]$ cd /bin
-[appuser@2e7265ba6071 bin]$ ./kafka-topics --bootstrap-server http://localhost:9092 --list --exclude-internal //리스트확인
-secondhandtransaction
-[appuser@2e7265ba6071 bin]$ ./kafka-console-consumer --bootstrap-server localhost:9092 --topic secondhandtransaction --from-beginning // 이벤트 실시간확인
-```
 
 ## Event Storming
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9a650292-74e8-4172-83d0-2a4c7c1b36d1)
@@ -49,47 +37,29 @@ mvn spring-boot:run
 ```
 
 ## Test by API
-- reservation
+데이터 세팅 후
+- trade 
 ```
- http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
- http :8088/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" status="예약완료" 
-```
-
-```
-Trade.Java
-    //<<< Clean Arch / Port Method
-    public static void startTrade(ReserveCompleted reserveCompleted) {
-        repository().findByProductid(reserveCompleted.getProductid()).ifPresent(trade->{
-            trade.setStatus("거래 진행중");
-
-         });
-
-    }
-```
-
-```
-TradeRepository.java
-@RepositoryRestResource(collectionResourceRel = "trades", path = "trades")
-public interface TradeRepository
-    extends PagingAndSortingRepository<Trade, Long> {
-
-        java.util.Optional<Trade> findByProductid(Long id);
-    }
-
-```
-- trade
-```
- http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price" 
+ http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price"
+ http :8088/trades id=1 productid="100" userid="abc" productname="애플워치" qty="1" price="50000"
 ```
 - stock
 ```
- http :8088/inventories id="id" productid="productid" productname="productname" qty="qty" 
+ http :8088/inventories id="id" productid="productid" productname="productname" qty="qty"
+ http :8088/inventories id="1" productid="100" productname="애플워치" qty="1"
 ```
 - notification
 ```
  http :8088/notices id="id" productid="productid" userid="userid" productname="productname" status="status" 
 ```
 
+- reservation
+```
+ http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
+ http :8088/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" id=1 status="예약완료" 
+```
+
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/1f374cf6-5e01-4fe6-9119-39a700b63a58)
 
 ## Run the frontend
 ```
