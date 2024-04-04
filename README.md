@@ -13,19 +13,9 @@
 당근마켓 커버하기
 
 구매자, 판매자를 User(이하 유저)라 칭한다.
-
 유저는 상품을 선택하여 거래 날짜를 예약한다.
-
-예약이 모두 완료되면 알림과 함께 상태가 업데이트된다.
-
-
-주문이 되면 주문 내역이 입점상점주인에게 전달된다
-상점주인이 확인하여 요리해서 배달 출발한다
-고객이 주문을 취소할 수 있다
-주문이 취소되면 배달이 취소된다
-고객이 주문상태를 중간중간 조회한다
-주문상태가 바뀔 때 마다 카톡으로 알림을 보낸다
-비기능적 요구사항
+거래에 성공할 경우 재고가 감소한다.
+예약/거래/재고 상태가 변경될 경우 알림과 함께 상태가 업데이트된다.
 
 트랜잭션
 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다 Sync 호출
@@ -51,9 +41,8 @@ docker-compose up
 cd infra
 docker-compose exec -it kafka /bin/bash
 cd /bin
-./kafka-console-consumer --bootstrap-server localhost:9092 --topic
+./kafka-console-consumer --bootstrap-server localhost:9092 --topic petstore
 ```
-
 ## Run the backend micro-services
 See the README.md files inside the each microservices directory:
 
@@ -72,7 +61,8 @@ mvn spring-boot:run
 ## Test by API
 - reservation
 ```
- http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status" 
+ http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
+ http :8088/reserves productid="100" userid="abc" productname="product" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" status="예약완료" 
 ```
 - trade
 ```
