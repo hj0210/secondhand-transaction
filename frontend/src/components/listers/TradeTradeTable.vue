@@ -93,7 +93,7 @@
                 'productid': 0,
                 'userid': '',
                 'productname': '',
-                'qty': '',
+                'qty': 0,
                 'price': '',
                 'status': '',
             }

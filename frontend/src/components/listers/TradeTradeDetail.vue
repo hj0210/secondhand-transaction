@@ -15,7 +15,7 @@
                 <String label="Productname" v-model="item.productname" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="Qty" v-model="item.qty" :editMode="editMode" @change="change" />
+                <Number label="Qty" v-model="item.qty" :editMode="editMode" @change="change" />
             </div>
             <div>
                 <String label="Price" v-model="item.price" :editMode="editMode" @change="change" />

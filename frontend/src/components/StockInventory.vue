@@ -38,7 +38,7 @@
                     text
                     @click="save"
                 >
-                    ConfirmTransaction
+                    DecreaseStock
                 </v-btn>
                 <v-btn
                     color="primary"
