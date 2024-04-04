@@ -17,15 +17,18 @@
 거래에 성공할 경우 재고가 감소한다.
 예약/거래/재고 상태가 변경될 경우 알림과 함께 상태가 업데이트된다.
 
-트랜잭션
-결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다 Sync 호출
-장애격리
-상점관리 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다 Async (event-driven), Eventual Consistency
-결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다 Circuit breaker, fallback
-성능
-고객이 자주 상점관리에서 확인할 수 있는 배달상태를 주문시스템(프론트엔드)에서 확인할 수 있어야 한다 CQRS
-배달상태가 바뀔때마다 카톡 등으로 알림을 줄 수 있어야 한다 Event driven
-
+docker compose는 infra folder에서
+```
+gitpod /workspace/secondhand-transaction (main) $ cd infra/
+gitpod /workspace/secondhand-transaction/infra (main) $ docker-compose exec -it kafka /bin/bash
+```
+```
+카프카실행
+[appuser@2e7265ba6071 ~]$ cd /bin
+[appuser@2e7265ba6071 bin]$ ./kafka-topics --bootstrap-server http://localhost:9092 --list --exclude-internal //리스트확인
+secondhandtransaction
+[appuser@2e7265ba6071 bin]$ ./kafka-console-consumer --bootstrap-server localhost:9092 --topic secondhandtransaction --from-beginning // 이벤트 실시간확인
+```
 
 ## Event Storming
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9a650292-74e8-4172-83d0-2a4c7c1b36d1)
