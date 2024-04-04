@@ -59,9 +59,25 @@ public class Reserve {
 
     //<<< Clean Arch / Port Method
     public static void updateStatus(StatusUpdated statusUpdated) {
-        repository().findBystatus(statusUpdated.getStatus()).ifPresent(Reserve->{
-            Reserve.setStatus(statusUpdated.getStatus());
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Reserve reserve = new Reserve();
+        repository().save(reserve);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(statusUpdated.get???()).ifPresent(reserve->{
+            
+            reserve // do something
+            repository().save(reserve);
+
+
          });
+        */
+
     }
     //>>> Clean Arch / Port Method
 

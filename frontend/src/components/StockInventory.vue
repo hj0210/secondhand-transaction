@@ -38,7 +38,7 @@
                     text
                     @click="save"
                 >
-                저장
+                    ConfirmTransaction
                 </v-btn>
                 <v-btn
                     color="primary"

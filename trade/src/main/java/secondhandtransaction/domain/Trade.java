@@ -48,36 +48,25 @@ public class Trade {
     }
 
     //<<< Clean Arch / Port Method
-    // public static void startTrade(ReserveCompleted reserveCompleted) {
-    //     repository().findByProductid(reserveCompleted.getProductid()).ifPresent(trade->{
-    //         trade.setStatus("거래 진행중");
-
-    //      });
-
-    // }
     public static void startTrade(ReserveCompleted reserveCompleted) {
-        repository().findByProductid(reserveCompleted.getProductid()).ifPresent(trade->{
-            try {
-                if ("예약완료".equals(reserveCompleted.getStatus())) {
-                    repository().save(trade);
-                    trade.setStatus("거래 진행중");
-                    TradeCompleted tradeCompleted = new TradeCompleted(trade);
-                    tradeCompleted.publishAfterCommit();
-                } else if ("예약취소".equals(reserveCompleted.getStatus())) {
-                    trade.setStatus("예약취소로 거래취소");
-                    repository().save(trade);
-                    TradeCanceled tradeCanceled = new TradeCanceled(trade);
-                    tradeCanceled.publishAfterCommit();
-                } else {
-                    trade.setStatus("예약상태 확인 불가");
-                }
-                
-            } catch (NullPointerException e) {
-                // reserveCompleted.getStatus()가 null이면 NullPointerException이 발생할 수 있음
-                trade.setStatus("예약상태 확인 불가 - 예외 발생: " + e.getMessage());
-                
-            }
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Trade trade = new Trade();
+        repository().save(trade);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(reserveCompleted.get???()).ifPresent(trade->{
+            
+            trade // do something
+            repository().save(trade);
+
+
          });
+        */
 
     }
     //>>> Clean Arch / Port Method

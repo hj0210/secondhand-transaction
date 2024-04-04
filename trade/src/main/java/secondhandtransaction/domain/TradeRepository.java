@@ -7,9 +7,4 @@ import secondhandtransaction.domain.*;
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "trades", path = "trades")
 public interface TradeRepository
-    extends PagingAndSortingRepository<Trade, Long> {
-
-        java.util.Optional<Trade> findByProductid(Long id);
-        java.util.Optional<Trade> findBystatus(String status);
-
-    }
+    extends PagingAndSortingRepository<Trade, Long> {}
