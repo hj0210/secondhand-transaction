@@ -109,6 +109,54 @@ public class Notice {
         */
 
     }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void alertToUser(ReserveCompleted reserveCompleted) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Notice notice = new Notice();
+        repository().save(notice);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(reserveCompleted.get???()).ifPresent(notice->{
+            
+            notice // do something
+            repository().save(notice);
+
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void alertToUser(TradeCompleted tradeCompleted) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Notice notice = new Notice();
+        repository().save(notice);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(tradeCompleted.get???()).ifPresent(notice->{
+            
+            notice // do something
+            repository().save(notice);
+
+
+         });
+        */
+
+    }
     //>>> Clean Arch / Port Method
 
 }

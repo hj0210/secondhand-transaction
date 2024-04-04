@@ -70,5 +70,37 @@ public class PolicyHandler {
         // Sample Logic //
         Notice.alertToUser(event);
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='ReserveCompleted'"
+    )
+    public void wheneverReserveCompleted_AlertToUser(
+        @Payload ReserveCompleted reserveCompleted
+    ) {
+        ReserveCompleted event = reserveCompleted;
+        System.out.println(
+            "\n\n##### listener AlertToUser : " + reserveCompleted + "\n\n"
+        );
+
+        // Sample Logic //
+        Notice.alertToUser(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='TradeCompleted'"
+    )
+    public void wheneverTradeCompleted_AlertToUser(
+        @Payload TradeCompleted tradeCompleted
+    ) {
+        TradeCompleted event = tradeCompleted;
+        System.out.println(
+            "\n\n##### listener AlertToUser : " + tradeCompleted + "\n\n"
+        );
+
+        // Sample Logic //
+        Notice.alertToUser(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
