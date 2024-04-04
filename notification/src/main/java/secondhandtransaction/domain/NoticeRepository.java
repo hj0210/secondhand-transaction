@@ -7,4 +7,7 @@ import secondhandtransaction.domain.*;
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "notices", path = "notices")
 public interface NoticeRepository
-    extends PagingAndSortingRepository<Notice, Long> {}
+    extends PagingAndSortingRepository<Notice, Long> {
+        java.util.Optional<Notice> findBystatus(String status);
+
+    }

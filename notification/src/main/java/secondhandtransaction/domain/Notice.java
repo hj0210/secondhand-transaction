@@ -41,120 +41,45 @@ public class Notice {
 
     //<<< Clean Arch / Port Method
     public static void alertToUser(ReserveCanceled reserveCanceled) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Notice notice = new Notice();
-        repository().save(notice);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(reserveCanceled.get???()).ifPresent(notice->{
-            
-            notice // do something
-            repository().save(notice);
-
-
+        repository().findBystatus(reserveCanceled.getStatus()).ifPresent(Notice->{
+            Notice.setStatus(reserveCanceled.getStatus());
          });
-        */
 
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void alertToUser(TradeCanceled tradeCanceled) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Notice notice = new Notice();
-        repository().save(notice);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(tradeCanceled.get???()).ifPresent(notice->{
-            
-            notice // do something
-            repository().save(notice);
-
-
+        repository().findBystatus(tradeCanceled.getStatus()).ifPresent(Notice->{
+            Notice.setStatus(tradeCanceled.getStatus());
          });
-        */
 
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void alertToUser(StockDecresed stockDecresed) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Notice notice = new Notice();
-        repository().save(notice);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(stockDecresed.get???()).ifPresent(notice->{
-            
-            notice // do something
-            repository().save(notice);
-
-
+        repository().findBystatus(stockDecresed.getStatus()).ifPresent(Notice->{
+            Notice.setStatus(stockDecresed.getStatus());
          });
-        */
-
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void alertToUser(ReserveCompleted reserveCompleted) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Notice notice = new Notice();
-        repository().save(notice);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(reserveCompleted.get???()).ifPresent(notice->{
-            
-            notice // do something
-            repository().save(notice);
-
-
+        repository().findBystatus(reserveCompleted.getStatus()).ifPresent(Notice->{
+            Notice.setStatus(reserveCompleted.getStatus());
          });
-        */
 
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void alertToUser(TradeCompleted tradeCompleted) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Notice notice = new Notice();
-        repository().save(notice);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(tradeCompleted.get???()).ifPresent(notice->{
-            
-            notice // do something
-            repository().save(notice);
-
-
+        repository().findBystatus(tradeCompleted.getStatus()).ifPresent(Notice->{
+            Notice.setStatus(tradeCompleted.getStatus());
          });
-        */
+
 
     }
     //>>> Clean Arch / Port Method

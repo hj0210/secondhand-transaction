@@ -13,7 +13,7 @@ public class TradeCompleted extends AbstractEvent {
     private Long productid;
     private String userid;
     private String productname;
-    private String qty;
+    private Integer qty;
     private String price;
     private String status;
 }

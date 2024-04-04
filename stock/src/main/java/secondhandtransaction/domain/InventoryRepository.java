@@ -10,4 +10,10 @@ import secondhandtransaction.domain.*;
     path = "inventories"
 )
 public interface InventoryRepository
-    extends PagingAndSortingRepository<Inventory, Long> {}
+    extends PagingAndSortingRepository<Inventory, Long> {
+        
+        java.util.Optional<Inventory> findByProductid(Long id);
+        java.util.Optional<Inventory> findBystatus(String status);
+        java.util.Optional<Inventory> findByqty(Integer qty);
+
+    }

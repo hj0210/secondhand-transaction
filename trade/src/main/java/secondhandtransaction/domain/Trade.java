@@ -25,7 +25,7 @@ public class Trade {
 
     private String productname;
 
-    private String qty;
+    private Integer qty;
 
     private String price;
 

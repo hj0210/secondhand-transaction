@@ -41,24 +41,37 @@ public class Inventory {
 
     //<<< Clean Arch / Port Method
     public static void decreaseStock(TradeCompleted tradeCompleted) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(tradeCompleted.get???()).ifPresent(inventory->{
-            
-            inventory // do something
-            repository().save(inventory);
-
+        repository().findByProductid(tradeCompleted.getProductid()).ifPresent(inventory->{
+            try {
+                if ("거래 진행중".equals(tradeCompleted.getStatus())) {
+                    if (inventory.getQty() - tradeCompleted.getQty() > 0) {
+                        repository().save(inventory);
+                        inventory.setStatus("거래 진행 중 재고와 실제 거래량 일치");
+                        StockDecresed stockDecresed = new StockDecresed(inventory);
+                        stockDecresed.publishAfterCommit();
+                    } else {
+                        repository().save(inventory);
+                        inventory.setStatus("거래 진행 중 재고와 실제 거래량 불일치로 거래 불가");
+                        StockDecresed stockDecresed = new StockDecresed(inventory);
+                        stockDecresed.publishAfterCommit();
+                    }
+                } else if ("예약취소로 거래취소".equals(tradeCompleted.getStatus())) {
+                    inventory.setStatus("거래 취소로 인한 재고 감소 없음");
+                    repository().save(inventory);
+                    StockDecresed stockDecresed = new StockDecresed(inventory);
+                    stockDecresed.publishAfterCommit();
+                } else {
+                    inventory.setStatus("거래상태 확인 불가");
+                }
+                
+                
+            } catch (NullPointerException e) {
+                // reserveCompleted.getStatus()가 null이면 NullPointerException이 발생할 수 있음
+                inventory.setStatus("거래상태 확인 불가 - 예외 발생: " + e.getMessage());
+                
+            }           
 
          });
-        */
 
     }
     //>>> Clean Arch / Port Method
