@@ -29,6 +29,8 @@ public class Trade {
 
     private String price;
 
+    private String status;
+
     @PostPersist
     public void onPostPersist() {
         TradeCompleted tradeCompleted = new TradeCompleted(this);

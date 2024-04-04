@@ -112,6 +112,7 @@
                 'productid': 0,
                 'productname': '',
                 'qty': 0,
+                'status': '',
             }
         },
         methods:{

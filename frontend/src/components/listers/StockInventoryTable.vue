@@ -70,6 +70,7 @@
                     { text: "productid", value: "productid" },
                     { text: "productname", value: "productname" },
                     { text: "qty", value: "qty" },
+                    { text: "status", value: "status" },
                 ],
             inventory : [],
             newValue: {},
@@ -90,6 +91,7 @@
                 'productid': 0,
                 'productname': '',
                 'qty': 0,
+                'status': '',
             }
         },
         methods: {

@@ -24,6 +24,8 @@ public class Inventory {
 
     private Integer qty;
 
+    private String status;
+
     @PostPersist
     public void onPostPersist() {
         StockDecresed stockDecresed = new StockDecresed(this);

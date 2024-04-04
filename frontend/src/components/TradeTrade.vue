@@ -21,6 +21,7 @@
             <String label="Productname" v-model="value.productname" :editMode="editMode" :inputUI="''"/>
             <String label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
             <String label="Price" v-model="value.price" :editMode="editMode" :inputUI="''"/>
+            <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

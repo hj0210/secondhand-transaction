@@ -72,6 +72,7 @@
                     { text: "productname", value: "productname" },
                     { text: "qty", value: "qty" },
                     { text: "price", value: "price" },
+                    { text: "status", value: "status" },
                 ],
             trade : [],
             newValue: {},
@@ -94,6 +95,7 @@
                 'productname': '',
                 'qty': '',
                 'price': '',
+                'status': '',
             }
         },
         methods: {

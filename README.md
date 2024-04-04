@@ -66,11 +66,11 @@ mvn spring-boot:run
 ```
 - trade
 ```
- http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price" 
+ http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price" status="status" 
 ```
 - stock
 ```
- http :8088/inventories id="id" productid="productid" productname="productname" qty="qty" 
+ http :8088/inventories id="id" productid="productid" productname="productname" qty="qty" status="status" 
 ```
 - notification
 ```
