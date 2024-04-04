@@ -33,27 +33,6 @@ secondhandtransaction
 ## Event Storming
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9a650292-74e8-4172-83d0-2a4c7c1b36d1)
 
-## Before Running Services
-### Make sure there is a Kafka server running
-- Download Kafka (init)
-```
-wget https://archive.apache.org/dist/kafka/3.1.0/kafka_2.13-3.1.0.tgz
-tar -xf kafka_2.13-3.1.0.tgz
-```
-
-- Run Kafka
-```
-cd kafka_2.13-3.1.0/
-bin/zookeeper-server-start.sh config/zookeeper.properties &
-bin/kafka-server-start.sh config/server.properties &
-```
-
-- Kafka Event 컨슈밍하기 (별도 터미널)
-```
-cd kafka_2.13-3.1.0/
-bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic petstore
-```
-
 ## Run the backend micro-services
 See the README.md files inside the each microservices directory:
 
