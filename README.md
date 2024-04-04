@@ -68,6 +68,10 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get
 chmod 700 get_helm.sh
 ./get_helm.sh
 
+
+## 컨테이너 환경
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/e5ce7b7c-45e9-4542-85d4-040c8a00d2be)
+
 ## Required Utilities
 
 - httpie (alternative for curl / POSTMAN) and network utils
