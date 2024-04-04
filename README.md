@@ -32,17 +32,25 @@
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
+- Download Kafka (init)
 ```
-cd kafka
-docker-compose up
+wget https://archive.apache.org/dist/kafka/3.1.0/kafka_2.13-3.1.0.tgz
+tar -xf kafka_2.13-3.1.0.tgz
 ```
-- Check the Kafka messages:
+
+- Run Kafka
 ```
-cd infra
-docker-compose exec -it kafka /bin/bash
-cd /bin
-./kafka-console-consumer --bootstrap-server localhost:9092 --topic petstore
+cd kafka_2.13-3.1.0/
+bin/zookeeper-server-start.sh config/zookeeper.properties &
+bin/kafka-server-start.sh config/server.properties &
 ```
+
+- Kafka Event 컨슈밍하기 (별도 터미널)
+```
+cd kafka_2.13-3.1.0/
+bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic petstore
+```
+
 ## Run the backend micro-services
 See the README.md files inside the each microservices directory:
 
@@ -62,15 +70,15 @@ mvn spring-boot:run
 - reservation
 ```
  http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
- http :8088/reserves productid="100" userid="abc" productname="product" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" status="예약완료" 
+ http :8088/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" status="예약완료" 
 ```
 - trade
 ```
- http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price" status="status" 
+ http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price" 
 ```
 - stock
 ```
- http :8088/inventories id="id" productid="productid" productname="productname" qty="qty" status="status" 
+ http :8088/inventories id="id" productid="productid" productname="productname" qty="qty" 
 ```
 - notification
 ```
