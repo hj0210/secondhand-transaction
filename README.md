@@ -62,15 +62,11 @@ mvn spring-boot:run
 - 단일진입점 게이트웨이 8088포트로 통신하여 연결된 모습
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/1f374cf6-5e01-4fe6-9119-39a700b63a58)
 
-## Run the frontend
-```
-cd frontend
-npm i
-npm run serve
-```
 
-## Test by UI
-Open a browser to localhost:8088
+## Docker
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
 
 ## Required Utilities
 
