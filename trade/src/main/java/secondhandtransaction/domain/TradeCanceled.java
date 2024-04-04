@@ -17,6 +17,7 @@ public class TradeCanceled extends AbstractEvent {
     private String productname;
     private String qty;
     private String price;
+    private String status;
 
     public TradeCanceled(Trade aggregate) {
         super(aggregate);

@@ -13,4 +13,5 @@ public class StockDecresed extends AbstractEvent {
     private Long productid;
     private String productname;
     private Integer qty;
+    private String status;
 }

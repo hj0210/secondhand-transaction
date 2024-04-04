@@ -114,6 +114,7 @@
                 'productname': '',
                 'qty': '',
                 'price': '',
+                'status': '',
             }
         },
         methods:{

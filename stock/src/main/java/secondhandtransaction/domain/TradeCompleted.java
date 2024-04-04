@@ -15,4 +15,5 @@ public class TradeCompleted extends AbstractEvent {
     private String productname;
     private String qty;
     private String price;
+    private String status;
 }
