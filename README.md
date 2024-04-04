@@ -59,6 +59,7 @@ mvn spring-boot:run
  http :8088/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" id=1 status="예약완료" 
 ```
 
+- 단일진입점 게이트웨이 8088포트로 통신하여 연결된 모습
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/1f374cf6-5e01-4fe6-9119-39a700b63a58)
 
 ## Run the frontend
