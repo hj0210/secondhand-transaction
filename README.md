@@ -18,9 +18,11 @@
 
 예약완료 상태로 POST가 되면 거래진행중으로 상태가 변경된다.
 
-유저가 인수인계/완료를 실행하여 상태변경이 이루어지면 재고가 감소된다.
+유저가 인수인계/완료를 POST하여 상태변경이 이루어지면 재고가 감소된다.
 
 예약/거래/재고 상태가 변경될 경우 알림과 함께 상태가 업데이트된다.
+
+Mypage view에서는 CQRS를 기반으로 Data projection을 진행한다.
 
 ## Event Storming
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/6c35680a-6854-4877-969c-207f838fd92a)
@@ -32,13 +34,7 @@ See the README.md files inside the each microservices directory:
 - trade
 - stock
 - notification
-
-
-## Run API Gateway (Spring Gateway)
-```
-cd gateway
-mvn spring-boot:run
-```
+- Mypage
 
 ## Test by API
 데이터 세팅 후
@@ -185,3 +181,6 @@ http put a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.c
 http a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.com:8080/actuator/health
 
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9fb741a7-a274-4ae1-99e9-a75ebc5a2c2d)
+
+
+
