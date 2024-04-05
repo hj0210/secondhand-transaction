@@ -5,9 +5,11 @@
 - 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
   
 ## 클라우드 아키텍처
-- 이미지 첨부 예정
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/0834fb4d-0339-415b-946c-053024e1ee00)
+
 ## MSA 아키텍처
-- 이미지 첨부 예정
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/3b53847e-5b9a-4158-8820-eddb9c639f21)
+
 
 # 서비스 시나리오
 당근마켓 커버하기
