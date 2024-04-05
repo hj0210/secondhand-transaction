@@ -52,11 +52,6 @@ mvn spring-boot:run
  http :8088/inventories id="id" productid="productid" productname="productname" qty="qty"
  http :8088/inventories id="1" productid="100" productname="애플워치" qty="1"
 ```
-- notification
-```
- http :8088/notices id="id" productid="productid" userid="userid" productname="productname" status="status" 
-```
-
 - reservation
 ```
  http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
@@ -136,9 +131,9 @@ kubectl logs -l app=reservation
 - configmap 결과
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/a7ca9fe6-ffce-4e59-9b20-742101dce0bc)
 
-
+```
 export AWS_ROOT_UID=879772956301
 export REGION=ca-central-1
 export CLUSTER_NAME=user12-eks
 export FILE_SYSTEM_ID=fs-07cd311e1a18d29a1
-
+```
