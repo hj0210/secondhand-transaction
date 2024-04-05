@@ -37,7 +37,7 @@ See the README.md files inside the each microservices directory:
 - trade
 - stock
 - notification
-- Mypage
+- mypage
 
 ## Test by API
 데이터 세팅 후
