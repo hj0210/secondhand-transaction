@@ -27,7 +27,7 @@
 Mypage view에서는 CQRS를 기반으로 Data projection을 진행한다.
 
 ## Event Storming
-![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/6c35680a-6854-4877-969c-207f838fd92a)
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/99a5f76f-ba78-4574-8325-d95e4475e23d)
 
 ## Run the backend micro-services
 See the README.md files inside the each microservices directory:
