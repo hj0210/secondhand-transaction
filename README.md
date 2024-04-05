@@ -168,43 +168,20 @@ parameters:
   directoryPerms: "700"
 EOF
 ```
-- 중간결과
-
+- 결과
+  
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/c8e7d35b-052c-4747-83ee-8cc42d98ae9e)
 
+### 셀프힐링 & 무정지 배포 
+- 컨테이너에 장애가 생겼을 때, 컨테이너 플랫폼이 자동으로 장애를 감지하여 복구
 
+- Liveness Probe 확인
+```
+http a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.com:8080/actuator/health
+```
 
-kubectl apply -f - <<EOF
-apiVersion: "apps/v1"
-kind: "Deployment"
-metadata: 
-  name: reservation
-  labels: 
-    app: reservation
-spec: 
-  selector: 
-    matchLabels: 
-      app: reservation
-  replicas: 1
-  template: 
-    metadata: 
-      labels: 
-        app: reservation
-    spec: 
-      containers: 
-      - name: reservation
-        image: chj0210/reservation:20240404 
-        ports: 
-          - containerPort: 80
-        volumeMounts:
-          - mountPath: "/mnt/data"
-            name: volume
-      volumes:
-      - name: volume
-        persistentVolumeClaim:
-          claimName: nfs-pvc  
-EOF
+# Liveness Probe Fail 설정 및 확인
+http put a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.com:8080/actuator/down
+http a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.com:8080/actuator/health
 
-
-
-
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9fb741a7-a274-4ae1-99e9-a75ebc5a2c2d)
