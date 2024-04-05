@@ -40,18 +40,18 @@ See the README.md files inside the each microservices directory:
 데이터 세팅 후
 - trade 
 ```
- http :8088/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price"
- http :8088/trades id=1 productid="100" userid="abc" productname="애플워치" qty="1" price="50000"
+ http :8080/trades id="id" productid="productid" userid="userid" productname="productname" qty="qty" price="price"
+ http :8080/trades id=1 productid="100" userid="abc" productname="애플워치" qty="1" price="50000"
 ```
 - stock
 ```
- http :8088/inventories id="id" productid="productid" productname="productname" qty="qty"
- http :8088/inventories id="1" productid="100" productname="애플워치" qty="1"
+ http :8080/inventories id="id" productid="productid" productname="productname" qty="qty"
+ http :8080/inventories id="1" productid="100" productname="애플워치" qty="1"
 ```
 - reservation
 ```
- http :8088/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
- http :8088/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" id=1 status="예약완료" 
+ http :8080/reserves id="id" productid="productid" userid="userid" productname="productname" qty="qty" reserveDt="reserveDt" address="address" price="price" status="status"
+ http :8080/reserves productid="100" userid="abc" productname="애플워치" qty="1" reserveDt="2024-04-04" address="서울특별시 서초구 방배동" price="50000" id=1 status="예약완료" 
 ```
 
 - 단일진입점 게이트웨이 8088포트로 통신하여 연결된 모습
