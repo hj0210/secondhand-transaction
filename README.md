@@ -76,14 +76,69 @@ chmod 700 get_helm.sh
 ## 컨테이너 환경
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/4f115764-4b8d-4db5-a572-55ee1e750ce5)
 
-## Required Utilities
+### 오토스케일아웃 HPA
 
-- httpie (alternative for curl / POSTMAN) and network utils
+chj0210/reservation:20240404 
+
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: siege
+spec:
+  containers:
+  - name: siege
+    image: chj0210/reservation:20240404 
+EOF
+
+- HPA 설정
 ```
-sudo apt-get update
-sudo apt-get install net-tools
-sudo apt install iputils-ping
-pip install httpie
+kubectl autoscale deployment reservation --cpu-percent=50 --min=1 --max=3
+
 ```
 
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/241c47b0-2920-4748-8663-3b1be7220c7c)
+
+- 부하 가동
+
+```
+kubectl exec -it siege -- /bin/bash
+siege -c1 -t2S -v http://a45408026295548f58ed3b56f796c0c7-760492431.ca-central-1.elb.amazonaws.com:8080/reserves
+```
+오토스케일링 확인
+
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/9a83cbb7-9630-48c2-aee6-df4f0c4b3adf)
+
+
+### 환경변수 구성하기 (ConfigMap)
+
+- configmap 설정
+ RESERVATION_LOG_LEVEL: INFO 레벨로 변경하여 업데이트
+
+```
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-dev
+  namespace: default
+data:
+  RESERVATION_LOG_LEVEL: INFO
+EOF
+```
+
+- 로그확인
+
+```
+kubectl logs -l app=reservation
+```
+
+- configmap 결과
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/a7ca9fe6-ffce-4e59-9b20-742101dce0bc)
+
+
+export AWS_ROOT_UID=879772956301
+export REGION=ca-central-1
+export CLUSTER_NAME=user12-eks
+export FILE_SYSTEM_ID=fs-07cd311e1a18d29a1
 
