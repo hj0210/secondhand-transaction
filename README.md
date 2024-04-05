@@ -131,9 +131,80 @@ kubectl logs -l app=reservation
 - configmap 결과
 ![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/a7ca9fe6-ffce-4e59-9b20-742101dce0bc)
 
+### EFS 파일시스템 마운트 PVC
+- 환경변수 설정
+
 ```
 export AWS_ROOT_UID=879772956301
 export REGION=ca-central-1
 export CLUSTER_NAME=user12-eks
-export FILE_SYSTEM_ID=fs-07cd311e1a18d29a1
+export FILE_SYSTEM_ID=fs-07cd311e1a18d29a1)
 ```
+
+-  Cluster에 EFS CSI 드라이버 설치
+
+```
+helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
+helm repo update
+helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
+  --namespace kube-system \
+  --set image.repository=602401143452.dkr.ecr.ca-central-1.amazonaws.com/eks/aws-efs-csi-driver \
+  --set controller.serviceAccount.create=false \
+  --set controller.serviceAccount.name=efs-csi-controller-sa
+```
+
+-  EFS csi Driver로 StorageClass 생성
+
+```
+kubectl apply -f - <<EOF
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: efs-sc
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: $FILE_SYSTEM_ID
+  directoryPerms: "700"
+EOF
+```
+- 중간결과
+
+![image](https://github.com/hj0210/secondhand-transaction/assets/68845747/c8e7d35b-052c-4747-83ee-8cc42d98ae9e)
+
+
+
+kubectl apply -f - <<EOF
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata: 
+  name: reservation
+  labels: 
+    app: reservation
+spec: 
+  selector: 
+    matchLabels: 
+      app: reservation
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        app: reservation
+    spec: 
+      containers: 
+      - name: reservation
+        image: chj0210/reservation:20240404 
+        ports: 
+          - containerPort: 80
+        volumeMounts:
+          - mountPath: "/mnt/data"
+            name: volume
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: nfs-pvc  
+EOF
+
+
+
+
